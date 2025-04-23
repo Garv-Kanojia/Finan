@@ -26,21 +26,21 @@ with pdfplumber.open(pdf_path) as pdf:
 with open("itr_text.txt", "w", encoding="utf-8") as f:
     f.write(text_data)
 
-# === Optional: Extract PAN, Name, etc. using regex ===
-def extract_pan(text):
-    match = re.search(r"\b([A-Z]{5}[0-9]{4}[A-Z])\b", text)
-    return match.group(1) if match else None
+# # === Optional: Extract PAN, Name, etc. using regex ===
+# def extract_pan(text):
+#     match = re.search(r"\b([A-Z]{5}[0-9]{4}[A-Z])\b", text)
+#     return match.group(1) if match else None
 
-def extract_name(text):
-    match = re.search(r"Name\s*:\s*([A-Za-z\s]+)", text)
-    return match.group(1).strip() if match else None
+# def extract_name(text):
+#     match = re.search(r"Name\s*:\s*([A-Za-z\s]+)", text)
+#     return match.group(1).strip() if match else None
 
-pan = extract_pan(text_data)
-name = extract_name(text_data)
+# pan = extract_pan(text_data)
+# name = extract_name(text_data)
 
-print("\n🧾 Extracted Info:")
-print("PAN:", pan)
-print("Name:", name)
+# print("\n🧾 Extracted Info:")
+# print("PAN:", pan)
+# print("Name:", name)
 
 # === Save tables to CSVs ===
 for i, table_df in enumerate(tables_data):
