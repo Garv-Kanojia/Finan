@@ -68,11 +68,12 @@ Business Context: {business_context}
 Question: {user_question}
 
 Follow these ruels strictly:
-1. Respond clearly, use ₹, reference ITR/context, say "Sorry, insufficient data" if needed.
+1. If you think the content is ITR or any financial document, say "Sorry, insufficient data".
+2. Respond clearly, use ₹, reference ITR/context, say "Sorry, insufficient data" if needed.
 2. Do not include "Answer" or "Response" words in your answer.
-3. Give a well structured and professional answer, use bullet points if needed.
-4. Be concise but specific, avoid unnecessary details.
-5. Do not include phrases like "5. Use financial terms, avoid slang. 6. Avoid grammatical errors, use simple and clear language. 7. Use tables, graphs, images, charts to explain complex ideas. 8. Avoid personal opinions, stick to facts and figures. 9. Use examples to illustrate your points. 10. Use reliable sources to back up your claims."
+4. Give a well structured and professional answer, use bullet points if needed.
+5. Be concise but specific, avoid unnecessary details.
+6. Do not include phrases like "5. Use financial terms, avoid slang. 6. Avoid grammatical errors, use simple and clear language. 7. Use tables, graphs, images, charts to explain complex ideas. 8. Avoid personal opinions, stick to facts and figures. 9. Use examples to illustrate your points. 10. Use reliable sources to back up your claims."
 """
     total_tokens = estimate_tokens(prompt) + 400  # max_new_tokens
     if total_tokens > 32000:
@@ -160,7 +161,7 @@ if st.button("Generate Fake ITR (for testing only)", disabled=st.session_state["
 st.divider()
 
 # --- Upload PDF ---
-uploaded_pdf = st.file_uploader("Upload your ITR PDF", type="pdf", disabled=st.session_state["operation_in_progress"])
+uploaded_pdf = st.file_uploader("Upload your PDF", type="pdf", disabled=st.session_state["operation_in_progress"])
 
 if uploaded_pdf and not st.session_state["pdf_processed"]:
     st.session_state["operation_in_progress"] = True
