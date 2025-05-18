@@ -17,7 +17,7 @@ st.title("📄➡️🤖 Financial Document Q&A Chatbot")
 from fake_form import generate_realistic_itr
 
 # Initialize Hugging Face Inference Client
-client = InferenceClient()  # Uses token from huggingface-cli login or HF_API_KEY env var
+client = InferenceClient(token=st.secrets["HF_API_KEY"])  # Uses token from huggingface-cli login or HF_API_KEY env var
 
 # --- Extraction ---
 def extract_from_pdf(pdf_file):
